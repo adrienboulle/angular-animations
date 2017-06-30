@@ -1,5 +1,5 @@
 /**
- * @license Angular v4.3.0-beta.0-9531cf3
+ * @license Angular v4.3.0-beta.0-9b4e795
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -4162,7 +4162,9 @@ function isTriggerEventValid(eventName) {
  * @return {?}
  */
 function cloakElement(element, value) {
-    element.style = element.style || {};
+    if (!element.style) {
+        element.style = {};
+    }
     const /** @type {?} */ oldValue = element.style.display;
     element.style.display = value != null ? value : 'none';
     return oldValue;
